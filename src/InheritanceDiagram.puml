@@ -1,0 +1,44 @@
+@startuml
+
+' Person class
+class Person {
+    - id: String
+    - firstName: String
+    - lastName: String
+    - title: String
+    - yearOfBirth: int
+    + getId(): String
+    + getFirstName(): String
+    + getLastName(): String
+    + getTitle(): String
+    + getYearOfBirth(): int
+    + getFullName(): String
+}
+
+' Worker class
+class Worker extends Person {
+    - hourlyPayRate: double
+    + getHourlyPayRate(): double
+    + calculateWeeklyPay(hoursWorked: double): double
+    + displayWeeklyPay(hoursWorked: double): void
+    + toCSV(): String
+    + toJSON(): String
+    + toXML(): String
+}
+
+' SalaryWorker class
+class SalaryWorker extends Worker {
+    - annualSalary: double
+    + getAnnualSalary(): double
+    + setAnnualSalary(salary: double): void
+    + calculateWeeklyPay(hoursWorked: double): double
+    + displayWeeklyPay(hoursWorked: double): void
+    + toCSV(): String
+    + toJSON(): String
+    + toXML(): String
+}
+
+Person <|-- Worker
+Worker <|-- SalaryWorker
+
+@enduml
